@@ -1,8 +1,10 @@
 local Players = PlayerService.getPlayers();
 local PlayerExtraDamage = {};
 
+local Time = 5;
+
 local function GiveExtraDamage()
-    while task.wait(5) do
+    while task.wait(Time) do
         local RandomPlayer = Players[math.random(#Players)];
         MessageService.broadcast(RandomPlayer.displayName.. " now deals 1 more damage!");
         PlayerExtraDamage[RandomPlayer] = PlayerExtraDamage[RandomPlayer] + 1;
