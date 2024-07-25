@@ -7,11 +7,15 @@ local Leaderboard = nil;
 local function GiveExtraDamage()
     while task.wait(Settings.Time) do
         local RandomPlayer = Players[math.random(#Players)];
-        MessageService.broadcast(RandomPlayer.displayName.. " now deals " .. Settings.ExtraDamage .. " more damage!");
         PlayerExtraDamage[RandomPlayer] = PlayerExtraDamage[RandomPlayer] + Settings.ExtraDamage;
 
-        if not Leaderboard then continue end;
-        Leaderboard:addScore(RandomPlayer, Settings.ExtraDamage);
+        if Settings.Broadcast then
+            MessageService.broadcast(RandomPlayer.displayName.. " now deals " .. Settings.ExtraDamage .. " more damage!");
+        end
+
+        if Leaderboard then
+            Leaderboard:addScore(RandomPlayer, Settings.ExtraDamage);
+        end;
     end
 end
 
@@ -40,8 +44,6 @@ local function OnDamage(event)
 
     event.damage = event.damage + PlayerExtraDamage[Attacker];
 end
-
-GameStart();
 
 Events.MatchStart(GameStart);
 Events.EntityDamage(OnDamage);
