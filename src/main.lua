@@ -21,10 +21,10 @@ local function OnDamage(event)
     local AttackerEntity = event.fromEntity;
     if not AttackerEntity then return end;
 
-    local Attacker = AttackerEntity.getPlayer();
+    local Attacker = AttackerEntity:getPlayer();
     if not Attacker then return end;
 
-    event.Damage = event.Damage + PlayerExtraDamage[Attacker];
+    event.damage = event.damage + PlayerExtraDamage[Attacker];
 end
 
 GameStart();
