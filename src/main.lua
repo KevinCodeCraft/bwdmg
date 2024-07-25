@@ -25,8 +25,6 @@ local function OnDamage(event)
     if not Attacker then return end;
 
     event.Damage = event.Damage + PlayerExtraDamage[Attacker];
-
-    return;
 end
 
 GameStart();
