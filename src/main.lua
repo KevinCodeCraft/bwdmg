@@ -31,5 +31,4 @@ end
 
 GameStart();
 
-Events.MatchStart(GameStart);
 Events.EntityDamage(OnDamage);
